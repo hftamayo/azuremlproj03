@@ -1,0 +1,55 @@
+---------------------------------------------------------------------------
+ConfigException                           Traceback (most recent call last)
+<ipython-input-19-2dd33d13fc7d> in <module>
+      1 # TODO: Submit your experiment
+----> 2 remote_run = experiment.submit(automl_config)
+
+/anaconda/envs/azureml_py36/lib/python3.6/site-packages/azureml/_jupyter_common/__init__.py in submit(self, config, tags, **kwargs)
+     84 def _experiment_submit_notebook_decorator(original_submit):
+     85     def submit(self, config, tags=None, **kwargs):
+---> 86         run = original_submit(self, config, tags, **kwargs)
+     87         _update_run_created_from(run)
+     88         return run
+
+/anaconda/envs/azureml_py36/lib/python3.6/site-packages/azureml/core/experiment.py in submit(self, config, tags, **kwargs)
+    218         submit_func = get_experiment_submit(config)
+    219         with self._log_context("submit config {}".format(config.__class__.__name__)):
+--> 220             run = submit_func(config, self.workspace, self.name, **kwargs)
+    221         if tags is not None:
+    222             run.set_tags(tags)
+
+/anaconda/envs/azureml_py36/lib/python3.6/site-packages/azureml/train/automl/automlconfig.py in _automl_static_submit(automl_config_object, workspace, experiment_name, **kwargs)
+     83     compute_target = automl_config_object.user_settings.get('compute_target')
+     84 
+---> 85     automl_config_object._validate_config_settings(workspace)
+     86     fit_params = automl_config_object._get_fit_params()
+     87 
+
+/anaconda/envs/azureml_py36/lib/python3.6/site-packages/azureml/train/automl/automlconfig.py in _validate_config_settings(self, workspace)
+   1833                     AzureMLError.create(
+   1834                         InvalidInputDatatype, target="training_data", input_type="Unknown",
+-> 1835                         supported_types=", ".join(SupportedInputDatatypes.REMOTE_RUN_SCENARIO)
+   1836                     )
+   1837                 )
+
+ConfigException: ConfigException:
+	Message: Input of type 'Unknown' is not supported. Supported types: [azureml.data.tabular_dataset.TabularDataset, azureml.pipeline.core.pipeline_output_dataset.PipelineOutputTabularDataset]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Input of type 'Unknown' is not supported. Supported types: [azureml.data.tabular_dataset.TabularDataset, azureml.pipeline.core.pipeline_output_dataset.PipelineOutputTabularDataset]",
+        "details_uri": "https://aka.ms/AutoMLConfig",
+        "target": "training_data",
+        "inner_error": {
+            "code": "BadArgument",
+            "inner_error": {
+                "code": "ArgumentInvalid",
+                "inner_error": {
+                    "code": "InvalidInputDatatype"
+                }
+            }
+        }
+    }
+}
