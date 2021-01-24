@@ -8,13 +8,13 @@
 1. Project's overview
 2. Project set up and installation
 3. Dataset
-3.1 Overview
-3.2 Task
-3.3 Access
+- Overview
+- Task
+- Access
 4. Automated ML
-4.1. Results
+- Results
 5. Hyperparameter tuning
-5.1. Results
+- Results
 6. Model deployment
 7. Screen recording
 8. Standout suggestions
