@@ -2,23 +2,22 @@
 ### Machine Learning Engineer with Microsoft Azure Program
 ###### Scholarship recipient: Herbert Fernández Tamayo
 
-
-
 #  Capstone Project: Homicides in El Salvador during 2018, comparing risk between men and women
 
 ### Table of Content
 1. Project's overview
 2. Project set up and installation
 3. Dataset
-4. Task
-5. Access
-6. Automated ML
-7. Results
-8. Hyperparameter tuning
-9. Results
-10. Model deployment
-11. Screen recording
-12. Standout suggestions
+3.1 Overview
+3.2 Task
+3.3 Access
+4. Automated ML
+4.1. Results
+5. Hyperparameter tuning
+5.1. Results
+6. Model deployment
+7. Screen recording
+8. Standout suggestions
 
 ## 1. Project's overview
 As a part of the Machine Learning Engineer with Microsoft Azure Nanodegree, the third project is related to apply the knowledge acquired to solve or analyze a problem of the real life, it is important to choose a dataset related to a real scenario rather than a sample dataset, in this case I've chosen the Dataset of year 2018 related to Homicides in El Salvador, I work for the Statistical Department of the National Institute of Forensic Science of El Salvador, the institute is one of the most respected institution in the country related to the analysis about the behavior of crimes in El Salvador. The main goal of this experiment is to predict the incidence of homicides in males and females, with the results, it will be a point of start to plan policies of prevention in the cohort with a higher risk obtained from this experiment's result.
@@ -42,7 +41,7 @@ To run this project on your own Azure Machine Learning Studio environment you sh
 
 ## 3. Dataset
 
-### Overview
+### 3.1 Overview
 The dataset, "cad2018.csv", contains the records of deaths by homicides in El Salvador during 2018, the data is gathered in 7 different offices around the country and monthly is validated by the Statistical Department, where I'm part of it,  of the National Institute of Forensic Science of El Salvador, since 2005 this country has been affected by the increase of deaths related to different way of violence, just in 2018 the official number of deaths related to homicides was 3,346.
 
 The original dataset has more than 70 columns, for this experiment, I've chosen 7 columns because the other ones didn't have a close relation with the hypothesis I need to test; the information of each column ,and how each was recoded, is the next:
@@ -65,38 +64,46 @@ Any user may request a copy of the dataset, it is necessary to specify what vari
 [Request information](https://transparencia.oj.gob.sv/es/solicitud-informacion)
 
 
-
-### Task
+### 3.2 Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 
-### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+### 3.3 Access
+For this experiment, the recoded data has been uploaded to this repository, from the jupyter notebook files the source code to access it is the next one:
 
-## Automated ML
+from azureml.data.dataset_factory import TabularDatasetFactory
+
+rawdata_homic2018 = "https://raw.githubusercontent.com/hftamayo/azuremlproj03/main/cad2018.csv"
+dshomic2018 = TabularDatasetFactory.from_delimited_files(path=rawdata_homic2018, separator=',')
+
+
+## 4. Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
-### Results
+### 4.1 Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
-## Hyperparameter Tuning
+## 5. Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
 
-### Results
+### 5.1 Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
-## Model Deployment
+## 6. Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
-## Screen Recording
+## 7. Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+## 8. Standout Suggestions
+1. Develop a Front End interface to interact with the deployed model, the FrontEnd will be more comprehensible for end-users
+2. Suggest to the National Institute of Forensic Science of El Salvador to redesign the database of homicides, simplifying some redundant variables and recoded those ones with character only options
+3. Deploy the best model found in a container, such as Kubernetes
+4. Explore different algorithms to analyze the database of homicides and predict future behaviors of the phenomenon
