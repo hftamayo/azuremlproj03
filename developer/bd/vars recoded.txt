@@ -19,7 +19,7 @@ l u             14
 sexo	
 masculino       0
 femenino        1
-indet           2
+
 
 
 pracaut	
