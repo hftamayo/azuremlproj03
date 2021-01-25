@@ -8,7 +8,7 @@ import joblib, pickle
 
 def init():
     global model
-    model_path = Model.get_model_path('best_hyper_model')
+    model_path = Model.get_model_path('outputs/bhypermodel.joblib')
     model = joblib.load(model_path)
 
 
