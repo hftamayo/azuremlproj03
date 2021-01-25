@@ -65,7 +65,12 @@ Any user may request a copy of the dataset, it is necessary to specify what vari
 
 
 ### 3.2 Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+The main objective of this project is to run and find the best of two models, one using HyperDrive experiment and the other one using Automated Machine Learning experiment, that can help us to determine if the salvadoran male population will have a higher risk than salvadoran women of been murdered in homicides circumstances.
+
+From 2010 in El Salvador there are different campaings to report and prevent murders just in women population -which is a great innitiative- but the purpose running this project is to put in the map that salvadoran male have almost thrice possilibites to died in homicides circumstances.
+
+The column key -sexo- has this categories: 0->male, 1-> female, which resembles it is a classification problem. (ANCLA)
+
 
 ### 3.3 Access
 For this experiment, the recoded data has been uploaded to this repository, from the jupyter notebook files the source code to access it is the next one:
@@ -77,12 +82,39 @@ dshomic2018 = TabularDatasetFactory.from_delimited_files(path=rawdata_homic2018,
 
 
 ## 4. Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+The configuration as well as other technical details related to the Automated ML experiment are the next ones:
+-experiment_timeout_minutes : 20 (defines the exit criteria of each iteration)
+
+-max_concurrent_iterations: 5 (number of thread -iteration- that can be executed simultaneously)
+
+-primary_metric : 'accuracy' (this is the metric the experiment will try to optimize)
+
+-task: 'classification' (key task that the experiment will focus to solve)
+
+-label_column_name='sexo' --> key column the experiment will try to predict)
+
 
 ### 4.1 Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+The algorithm with the best performance during the tests was "VotingEnsemble" with a score of 0.8822, for a detailed list of the results you may check the file "automl.ipynb" section "Run Details"; in the next picture we can see the last algorithms executed and its results:
+
+![automl_01.png](./img/automl_01.png?raw=true "AutoML best result")
+
+
+One of the most useful tool running this experiment is the RunDetails widget where we can get different graphical elements related to the results, in the next picture we can observe a 2D graphical of the result during their execution:
+
+![automl_02.png](./img/automl_02.png?raw=true "2D graphical")
+
+One fact to be taken in count is we can get a slight different results during the execution of the same experiment - no changes in the jupyter notebook- at different times in Machine Learning Studio, it might be related to technical reasons such as  CPU performance, bandwith, between others, it would be great in the future to know the exact reasons. In the next picture you can see the result of VotingEnsemble was 0.8825 which is a little bit higher that 0.8822:
+
+![automl_03.png](./img/automl_03.png?raw=true "results")
+
+Details of the best model are shown in the next picture:
+
+![automl_04.png](./img/automl_04.png?raw=true "best model")
+
+
+In a near future I would like to expand some options in order to evaluate if the results may be improved: first I would like to try running the experiment in compute cluster with more resources (GPU instead of CPU for example), then I would like to increase the running time in order to evaluate if the results obtained are more accurated and finally I would like to expand the number of columns evaluated.
 
 ## 5. Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
