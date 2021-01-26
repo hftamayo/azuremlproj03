@@ -14,10 +14,10 @@ rawdata = "https://raw.githubusercontent.com/hftamayo/azuremlproj03/main/cad2018
 dshomic2018 = TabularDatasetFactory.from_delimited_files(rawdata)
 
 
-# Save model for current iteration
+#Save model for current iteration
 
 run = Run.get_context()
-
+  
 x_df = dshomic2018.to_pandas_dataframe().dropna()
 
 y_df = x_df.pop("sexo")
@@ -45,8 +45,7 @@ def main():
 
     #Save model for current iteration, also include the value for C and max_iter in filename, random_state=
     os.makedirs('outputs', exist_ok=True)
-    #joblib.dump(model, 'outputs/hyperDrive_{}_{}'.format(args.C,args.max_iter))
-    joblib.dump(model, filename='./outputs/bhypermodel.pkl')
+    joblib.dump(model, 'outputs/hyperDrive_{}_{}'.format(args.C,args.max_iter))
 
 if __name__ == '__main__':
     main()

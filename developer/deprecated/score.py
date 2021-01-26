@@ -9,8 +9,8 @@ import joblib, pickle
 def init():
     global model
     #model_path = Model.get_model_path('outputs/bhypermodel.joblib')
-    #model_path = Model.get_model_path('bhypermodel.joblib')
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'bhypermodel.pkl')
+    model_path = Model.get_model_path('HyperDrive_HighAccuracy')
+    #optional: model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'bhypermodel.joblib')
     model = joblib.load(model_path)
 
 
