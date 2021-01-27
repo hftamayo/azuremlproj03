@@ -269,7 +269,7 @@ Some pitfalls during the deployment process:
 A detailed video about this project can be found here:
 [Project's Details](https://youtu.be/9jupGgBN27k)
 
-Disclaimer: in the rubric there is a policy about the limit time of the video, however, I extend its duration thinking in give more details to any public interested in the project and in general interested in the learning process of Machine Learning with Microsoft Azure Studio, for entry levels users it can be a challenge to design, run and debug this kind of project so I wanted to give more elements to that kind of public. My intention was not to break rules from the rubric.
+Disclaimer: in the rubric there is a policy about the limit time of the video, however, I extended its duration thinking in give more details to any person interested in the project and in general interested in the learning process of Machine Learning with Microsoft Azure Studio, for entry levels users it can be a challenge to design, run and debug this kind of project so I wanted to give more elements to that kind of public. My intention was not to break rules from the rubric, just to be as explanatory as it may be needed.
 
 ## 8. Standout Suggestions
 1. Use a dataset from real scenario is totally different than uses a sample dataset, it needs to run a validation a reclassification of the categories, double checked the values, output format, between other facts, despite all that work it has a good feeling to face with real results from real data, from my point of view, it's an extra skill from the ML Engineer this kind of experience. Most of the sample databases are so accurate than the results are almost automatically expected
