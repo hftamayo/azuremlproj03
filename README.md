@@ -276,4 +276,4 @@ Disclaimer: in the rubric there is a policy about the limit time of the video, h
 ## 9. Best practice:
 In the last part of each experiments, the compute cluster as well as the webservices are deleted:
 
-![bp01.png](./img/bp01?raw=true "Best practices")
+![bp01.png](./img/bp01.png?raw=true "Best practices")
