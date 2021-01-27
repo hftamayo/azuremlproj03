@@ -18,9 +18,13 @@
 8. Standout suggestions
 
 ## 1. Project's overview
-As a part of the Machine Learning Engineer with Microsoft Azure Nanodegree, the third project is related to apply the knowledge acquired to solve or analyze a problem of the real life, it is important to choose a dataset related to a real scenario rather than a sample dataset, in this case I've chosen the Dataset of year 2018 related to Homicides in El Salvador, I work for the Statistical Department of the National Institute of Forensic Science of El Salvador, the institute is one of the most respected institution in the country related to the analysis about the behavior of crimes in El Salvador. The main goal of this experiment is to predict the incidence of homicides in males and females, with the results, it will be a point of start to plan policies of prevention in the cohort with a higher risk obtained from this experiment's result.
+As a part of the Machine Learning Engineer with Microsoft Azure Nanodegree, the third project is related to apply the knowledge acquired to solve or analyze a problem of the real life, it is important to choose a dataset related to a real scenario rather than a sample dataset, in this case I've chosen the Dataset of year 2018 related to Homicides in El Salvador, I work for the Statistics Department of the National Institute of Forensic Sciences of El Salvador, this institution is one of the most respected sources in the country related to the analysis about the behavior of different crimes in El Salvador. 
 
-The project has two models: the first one is based on Automated Machine Learning method which consists in the evaluation of the dataset using multiples algorithms then we can choose the best one based on the level of accuracy obtained; the second one is based on HyperDrive method, the user sets hyperparameters to obtain results. Comparing the results of both models, it is encourage to deploy the best performing model through a web service and test it sending a data request.
+The main goal of this experiment is to predict the incidence of homicides in males compare to females; once we obtain and analysis the results, it should be a point of start for planning programs and policies of prevention in the cohort with a higher risk obtained.
+
+The project has two models: the first one is based on Automated Machine Learning method which consists in the evaluation of the dataset using multiples algorithms, then we may choose the best one based on its level of accuracy; the second one is based on HyperDrive method, the user sets different hyperparameters to obtain results, these ones may vary depending of the algorithms and hyperparameters sets chosen. 
+
+Comparing the results of both models, it is encourage to deploy the best performing model through a web service and test it sending a data request.
 
 The below diagram was provided by Capstone project's instructor with the idea to understand better how both models should be run:
 ![pdiagram.png](./img/pdiagram.png?raw=true "Project diagram")
@@ -28,21 +32,23 @@ The below diagram was provided by Capstone project's instructor with the idea to
 
 ## 2. Project Set Up and Installation
 To run this project on your own Azure Machine Learning Studio environment you should follow the next steps:
-1. Download from this repo the next files: automl.ipynb, hyperparameter_tuning.ipynb, train.py and cad2018.csv, you don't need to clone the entire repo.
-2. Sign in your Azure ML Studio, upload the ipynb files and train.py
-3. Create a type D2 Compute Instance, you may call it "notebooks"
-4. From the new Compute Instance load Jupyter Notebook framework, from here, before open them load a terminal
-5. By the time I run my experiments I need to update some dependencies, so from the terminal run the next command: pip install --upgrade azureml-sdk[notebooks,automl]
-6. Next, open automl.ipynb and run each cell at a time, pay attention to the results
-7. When step 6 has been finished you may open and run each cell on hyperparameter_tuning.ipynb file; again, pay attention to the results
+1. Download from this repo the next files: automl.ipynb, hyperparameter_tuning.ipynb, train.py, score.py and cad2018.csv, you don't need to clone the entire repo
+2. Sign in your Azure ML Studio, upload the ipynb and py files 
+3. Create a type DS2_V2 Compute Instance to run the above jupyter notebooks files, you may call it "notebooks"
+4. From the new Compute Instance load Jupyter Notebook framework.
+5. Next, open automl.ipynb and run each cell at a time, pay attention to the results
+6. When step 7 has been finished you may open and run each cell on hyperparameter_tuning.ipynb file; again, pay attention to the results
+7. It is not mandatory to run one file at a time but it is a good idea in order to identify the differences in the processes executed.
 8. If you want to try your own dataset, you may change the objects called: rawdata_homic2018 as well as the target column name in train.py and automl.ipynb
+9. By the time I run my experiments I need to update some dependencies, in case it is your case, open a terminal and run the next command: pip install --upgrade azureml-sdk[notebooks,automl]
+
 
 ## 3. Dataset
 
 ### 3.1 Overview
-The dataset, "cad2018.csv", contains the records of deaths by homicides in El Salvador during 2018, the data is gathered in 7 different offices around the country and monthly is validated by the Statistical Department, where I'm part of it,  of the National Institute of Forensic Science of El Salvador, since 2005 this country has been affected by the increase of deaths related to different way of violence, just in 2018 the official number of deaths related to homicides was 3,346.
+The dataset, "cad2018.csv", contains the records of deaths by homicides in El Salvador during 2018, the data is gathered in 7 different offices around the country and monthly is validated by different data analyst of the Statistics Department of the National Institute of Forensic Science of El Salvador, since 2005 this country has been affected by the increase of deaths related to different way of violence, just in 2018 the official number of deaths related to homicides was 3,346. 
 
-The original dataset has more than 70 columns, for this experiment, I've chosen 7 columns because the other ones didn't have a close relation with the hypothesis I need to test; the information of each column ,and how each was recoded, is the next:
+The original dataset has more than 70 columns; for this experiment, I've chosen 7 columns of them because the other ones didn't have a close relation with the hypothesis I need to test; the information of each column ,and how each was recoded, is the next:
 
 - id: internal ID field for each record, this is the primary key field. [no recoded]
 
@@ -52,13 +58,13 @@ The original dataset has more than 70 columns, for this experiment, I've chosen 
 
 - sexo: sex of the murdered person. Recoded values: [male -> 0, female -> 1]
 
--deptoocuhe: name of the state where the homicide was commited: Recoded values: [Ahuachapan->1, Santa Ana->2, Sonsonate->3, Chalatenango->4, La Libertad->5, San Salvador->6, Cuscatlan->7, La Paz->8, Cabanas->9, San Vicente->10, Usulutan->11, San Miguel->12, Morazan->13, La Union->14]
+- deptoocuhe: name of the state where the homicide was commited: Recoded values: [Ahuachapan->1, Santa Ana->2, Sonsonate->3, Chalatenango->4, La Libertad->5, San Salvador->6, Cuscatlan->7, La Paz->8, Cabanas->9, San Vicente->10, Usulutan->11, San Miguel->12, Morazan->13, La Union->14]
 
--tipoarma: name of the object used to commit the crime: Recoded values: [arma de fuego->1, asf x estrangulacion->2, asf x ahorcadura->3, asf x sofocacion->4, asf x sumersion->5, blanca sin espec->6, caida provocada->7, cortante->8, cortocontundente->9, cortopunzante->10, manos y pies->11, no datos->12, objeto contundente->13, lapidado->14, punzante->15, quemadura x fuego->16
+- tipoarma: name of the object used to commit the crime: Recoded values: [arma de fuego->1, asf x estrangulacion->2, asf x ahorcadura->3, asf x sofocacion->4, asf x sumersion->5, blanca sin espec->6, caida provocada->7, cortante->8, cortocontundente->9, cortopunzante->10, manos y pies->11, no datos->12, objeto contundente->13, lapidado->14, punzante->15, quemadura x fuego->16
 
-pracaut: Authopsy practiced to the corpse: Recoded values: [si->1, no->0]
+- pracaut: Authopsy practiced to the corpse: Recoded values: [si->1, no->0]
 
-Any user may request a copy of the dataset, it is necessary to specify what variables are requested, also it is mandatory to fulfill the next form:
+Any user may request a copy of the dataset, it is necessary to specify what variables are needed, also it is mandatory to fulfill the next form:
 [Request information](https://transparencia.oj.gob.sv/es/solicitud-informacion)
 
 
