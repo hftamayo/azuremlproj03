@@ -67,7 +67,7 @@ The main objective of this project is to run and find the best of two models, on
 
 From 2010 in El Salvador there are different campaings to report and prevent murders just in women population -which is a great innitiative- but the purpose running this project is to put in the map that salvadoran male have almost thrice possilibites to died in homicides circumstances.
 
-The column key -sexo- has this categories: 0->male, 1-> female, which resembles it is a classification problem. (ANCLA)
+The column key -sexo- has this categories: 0->male, 1-> female, which resembles it is a classification problem.
 
 
 ### 3.3 Access
@@ -232,7 +232,12 @@ The sourcode from my hyperdrive jupyter notebook file to implement the model is 
 ![hyper_wservice_scode.png](./img/hyper_wservice_scode.png?raw=true "Hyper webservice sourcecode")
 
 
+The process of test the HyperDrive Model recently deployed is different, more details in the next picture:
 
+
+![hyperws_09.png](./img/hyperws_09.png?raw=true "AutoML webservice testing")
+
+![hyperws_10.png](./img/hyperws_10.png?raw=true "AutoML webservice testing")
 
 About the endpoint, in the next images there are technical information that might be useful to check its healthy:
 
@@ -254,17 +259,21 @@ Some pitfalls during the deployment process:
 - Be sure how to convert your test data into JSON format.
 
 ## 7. Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
+
+A detailed video about this project can be found here:
+[Project's Details](https://youtu.be/9jupGgBN27k)
+
+Disclaimer: in the rubric there is a policy about the limit time of the video, however, I extend its duration thinking in give more details to any public interested in the project and in general interested in the learning process of Machine Learning with Microsoft Azure Studio, for entry levels users it can be a challenge to design, run and debug this kind of project so I wanted to give more elements to that kind of public. My intention was not to break rules from the rubric.
 
 ## 8. Standout Suggestions
-1. Develop a Front End interface to interact with the deployed model, the FrontEnd will be more comprehensible for end-users
-2. Suggest to the National Institute of Forensic Science of El Salvador to redesign the database of homicides, simplifying some redundant variables and recoded those ones with character only options
-3. Deploy the best model found in a container, such as Kubernetes
-4. Explore different algorithms to analyze the database of homicides and predict future behaviors of the phenomenon
+1. Use a dataset from real scenario is totally different than uses a sample dataset, it needs to run a validation a reclassification of the categories, double checked the values, output format, between other facts, despite all that work it has a good feeling to face with real results from real data, from my point of view, it's an extra skill from the ML Engineer this kind of experience. Most of the sample databases are so accurate than the results are almost automatically expected
+2. Develop a Front End interface to interact with the deployed model, the FrontEnd will be more comprehensible for end-users
+3. Suggest to the National Institute of Forensic Sciences of El Salvador to redesign the database of homicides, simplifying some redundant variables and recoded those ones with character only options
+4. Deploy the best model found in a container, such as Kubernetes
+5. Explore different algorithms to analyze the database of homicides and predict future behaviors of the phenomenon
 
 
 ## 9. Best practice:
-As a part of best practices, I tried to convert my HyperDrive best model to ONNX format, this is the sourcecode and the results:
+In the last part of each experiments, the compute cluster as well as the webservices are deleted:
+
+![bp01.png](./img/bp01?raw=true "Best practices")
