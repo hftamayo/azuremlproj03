@@ -129,7 +129,7 @@ Also, in the next picture, the parameters for the best model are shown, more det
 
 - Figure 5: Best model's parameters
 
-ANCLA OBSERVACION 1
+![automl_05.png](./img/automl_05.png?raw=true "best model parameters")
 
 
 In a near future I would like to expand some options in order to evaluate if the results may be improved: 
@@ -310,6 +310,10 @@ Some pitfalls during the deployment process:
 - Be sure how to convert your test data into JSON format.
 
 ## 7. Screen Recording
+
+For an overview of the project, please refer to the next video:
+
+[Project's Overview](https://youtu.be/foNxcrx8xMM)
 
 A detailed video about this project can be found here:
 [Project's Details](https://youtu.be/9jupGgBN27k)
